@@ -16,6 +16,6 @@ fi
 
 echo "New Job `date`" >> acronjobTestSTDOUT.txt
 echo "New Job `date`" >> CurrentlyRunning.txt
-python DoByRuns.py $workDir/PseudoPCL/"$1" >> acronjobTestSTDOUT.txt
+python DoByRuns.py "$1" >> acronjobTestSTDOUT.txt
 echo "Job Finished `date`" >> acronjobTestSTDOUT.txt
 echo "Job Finished `date`" >> CurrentlyRunning.txt
