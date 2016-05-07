@@ -425,7 +425,7 @@ else :
         Text_Signif.SetFillColor(kGray)
 Text_Signif.Draw()
 
-c.Print("PCL_SiPixAl.pdf")
+c1.Print("PCL_SiPixAl.pdf")
 
 
 file = ROOT.TFile("PCL_SiPixAl_DQM.root","RECREATE")
