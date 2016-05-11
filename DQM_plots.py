@@ -350,7 +350,7 @@ Zrot_2.Draw("HIST same")
 Zrot_3.Draw("HIST same")
 
 c.Print("PCL_SiPixAl_Expert.pdf")
-
+c.Print("PCL_SiPixAl_Expert.png")
 
 c1 = ROOT.TCanvas("PCL_SiPixAl","PCL_SiPixAl",1000,600)
 c1.Divide(1,3)
@@ -426,7 +426,7 @@ else :
 Text_Signif.Draw()
 
 c1.Print("PCL_SiPixAl.pdf")
-
+c1.Print("PCL_SiPixAl.png")
 
 file = ROOT.TFile("PCL_SiPixAl_DQM.root","RECREATE")
 c1.Write()

@@ -26,7 +26,7 @@ pseudoPCLConfig = configModule.pseudoPCLConfig
 #Tell the script whether it should be uploading results to the dropbox
 uploadToDropbox = pseudoPCLConfig.uploadToDropBox #uploads them to 
 
-skipExpressStreamFinishedCheck = configModule.skipExpressStreamFinishedCheck  #checks for run finished from tier0
+skipExpressStreamFinishedCheck = pseudoPCLConfig.skipExpressStreamFinishedCheck  #checks for run finished from tier0
 
 sendEmailNotification = pseudoPCLConfig.sendMail
 
