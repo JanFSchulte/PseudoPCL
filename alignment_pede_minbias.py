@@ -57,17 +57,17 @@ process.GlobalTag.globaltag = "INSERTGT"
 process.load("RecoVertex.BeamSpotProducer.BeamSpot_cfi")
 
 #-- Set APEs to ZERO
-import CalibTracker.Configuration.Common.PoolDBESSource_cfi
-process.conditionsInTrackerAlignmentErrorRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
-    connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
-    toGet = cms.VPSet(
-        cms.PSet(
-            record = cms.string('TrackerAlignmentErrorExtendedRcd'),
-            tag = cms.string('TrackerIdealGeometryErrorsExtended210_mc')
-            )
-        )
-    )
-process.prefer_conditionsInTrackerAlignmentErrorRcd = cms.ESPrefer("PoolDBESSource", "conditionsInTrackerAlignmentErrorRcd")
+#import CalibTracker.Configuration.Common.PoolDBESSource_cfi
+#process.conditionsInTrackerAlignmentErrorRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
+#    connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
+#    toGet = cms.VPSet(
+#        cms.PSet(
+#            record = cms.string('TrackerAlignmentErrorExtendedRcd'),
+#            tag = cms.string('TrackerIdealGeometryErrorsExtended210_mc')
+#            )
+#        )
+#    )
+#process.prefer_conditionsInTrackerAlignmentErrorRcd = cms.ESPrefer("PoolDBESSource", "conditionsInTrackerAlignmentErrorRcd")
 
 ## SiStrip BackPlane corrections
 #process.conditionsInSiStripBackPlaneCorrectionRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
@@ -186,7 +186,7 @@ process.TrackerTrackHitFilter.replaceWithInactiveHits = True
 process.TrackerTrackHitFilter.rejectBadStoNHits = True
 process.TrackerTrackHitFilter.commands = cms.vstring("keep PXB","keep PXE","keep TIB","keep TID","keep TOB","keep TEC")#,"drop TID stereo","drop TEC stereo")
 process.TrackerTrackHitFilter.stripAllInvalidHits = False
-process.TrackerTrackHitFilter.StoNcommands = cms.vstring("ALL 12.0")
+process.TrackerTrackHitFilter.StoNcommands = cms.vstring("ALL 18.0")
 process.TrackerTrackHitFilter.rejectLowAngleHits = True
 if cosmics:
 	process.TrackerTrackHitFilter.TrackAngleCut = 0.35# in rads, starting from the module surface; .35 for cosmcics ok, .17 for collision tracks
@@ -281,7 +281,7 @@ process.TrackRefitter2 = process.TrackRefitter1.clone(
 process.source = cms.Source("PoolSource",
     secondaryFileNames = cms.untracked.vstring(),
     fileNames = cms.untracked.vstring(
-			'INSERTFILENAME'
+			'INSERTFILENAME',
     			),
 )
 process.maxEvents = cms.untracked.PSet(
