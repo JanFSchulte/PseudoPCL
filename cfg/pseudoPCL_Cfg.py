@@ -1,7 +1,7 @@
 class pseudoPCLConfig:
 
 	#millepde config:
-	globalTag = "80X_dataRun2_Express_v6"
+	globalTag = "80X_dataRun2_Express_v7"
 	cosmics = False
 	magnetOn = True
 
@@ -11,11 +11,12 @@ class pseudoPCLConfig:
 
 	#user config
 	mail = "jschulte@cern.ch"
-	workDir = "/afs/cern.ch/work/j/jschulte/CMSSW_8_0_7/src/"
+	workDir = "/afs/cern.ch/work/j/jschulte/CMSSW_8_0_7/src/test/"
 	pubDir = "/afs/cern.ch/user/j/jschulte/public"
 	sendMail = True
 	
 	#PCL config
 	uploadToDropBox = False
+	skipExpressStreamFinishedCheck = False
 	
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-split -d -l 1 tempFiles.txt TkMinBias
+split -d -l 10 tempFiles.txt TkMinBias
 mv TkMinBias00 TkMinBias0
 mv TkMinBias01 TkMinBias1
 mv TkMinBias02 TkMinBias2

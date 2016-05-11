@@ -26,7 +26,7 @@ pseudoPCLConfig = configModule.pseudoPCLConfig
 #Tell the script whether it should be uploading results to the dropbox
 uploadToDropbox = pseudoPCLConfig.uploadToDropBox #uploads them to 
 
-skipExpressStreamFinishedCheck = True  #checks for run finished from tier0
+skipExpressStreamFinishedCheck = configModule.skipExpressStreamFinishedCheck  #checks for run finished from tier0
 
 sendEmailNotification = pseudoPCLConfig.sendMail
 
@@ -54,25 +54,22 @@ else:
 foundRun = False
 
 if os.path.exists("RunNumbers.txt"): os.system("rm RunNumbers.txt")
-print "hier"    
 command="./das_client.py --query=\"run dataset=%s | grep run.run_number | sort run.run_number\" --limit=0 | awk \'$1>"%pseudoPCLConfig.dataset +lastRun+"\'> RunNumbers.txt"
 print command
 os.system(command)
-print "hier auch?"    
 RunFile=open('RunNumbers.txt','r')
 RunLines = RunFile.readlines()
 RunFile.close()
 
 
 if len(RunLines) > 0:
-    print "hier=??"
     for run_num in RunLines:
-        command = "curl -k https://cmsweb.cern.ch/tier0/isexpresscomplete?run=" + run_num[:-1] + " >& curlOutput.txt"
-        print command
+        #command = "curl -k https://cmsweb.cern.ch/tier0/isexpresscomplete?run=" + run_num[:-1] + " >& curlOutput.txt"
+	command = "curl -k -s 'https://cmsweb.cern.ch/t0wmadatasvc/prod/run_stream_done?run=%s&stream=Express'"%run_num[:-1] + " >& curlOutput.txt"        
         os.system(command)
         curlOut=open('curlOutput.txt','r')
-        curlLine = curlOut.readlines()        
-        isFinished = curlLine[-1]
+        curlLine = curlOut.readlines()
+        isFinished = "true" in curlLine[1]
         os.system("rm curlOutput.txt")
 
 
@@ -165,9 +162,8 @@ os.getcwd()
 os.system('bash splitInput.sh')
 #command_wait = "bsub -q 8nh -o output_pede.txt -e error_pede.txt -J Pede_2015 -w \""
 command_wait = "bsub -q cmsexpress -o output_pede.txt -e error_pede.txt -J Pede_2016 -w \""
-tempNum = min(80,len(ListFiles))
+tempNum = min(100,len(ListFiles)/10+1)
 for file in range(0,tempNum):
-	#print file
 	if file != 0:
 		command_wait = command_wait + " &&"
 	#command = "bsub -q 8nh -o output_{1}.txt -e error_{1}.txt -J MinBias_2015_{1} automationMinBias.sh {0} {1}".format(runNumber,file)
