@@ -76,7 +76,7 @@ if len(RunLines) > 0:
         
         runNumber = run_num[:-1]
 
-        if isFinished == "True" or skipExpressStreamFinishedCheck:
+        if isFinished == True or skipExpressStreamFinishedCheck:
             if os.path.exists("tempFiles.txt"):
                 os.system("rm tempFiles.txt")
             callCommand = "./das_client.py --query=\"file run="+run_num[:-1]+" dataset=%s | grep file.name\" --limit=0 > tempFiles.txt"%pseudoPCLConfig.dataset

@@ -11,7 +11,7 @@ class pseudoPCLConfig:
 
 	#user config
 	mail = "jschulte@cern.ch"
-	workDir = "/afs/cern.ch/work/j/jschulte/CMSSW_8_0_7/src/test/"
+	workDir = "/afs/cern.ch/work/j/jschulte/CMSSW_8_0_7/src/"
 	pubDir = "/afs/cern.ch/user/j/jschulte/public"
 	sendMail = True
 	
