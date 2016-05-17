@@ -57,16 +57,16 @@ process.GlobalTag.globaltag = "INSERTGT"
 process.load("RecoVertex.BeamSpotProducer.BeamSpot_cfi")
 
 #-- Set APEs to ZERO
-#import CalibTracker.Configuration.Common.PoolDBESSource_cfi
-#process.conditionsInTrackerAlignmentErrorRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
-#    connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
-#    toGet = cms.VPSet(
-#        cms.PSet(
-#            record = cms.string('TrackerAlignmentErrorExtendedRcd'),
-#            tag = cms.string('TrackerIdealGeometryErrorsExtended210_mc')
-#            )
-#        )
-#    )
+import CalibTracker.Configuration.Common.PoolDBESSource_cfi
+process.conditionsInTrackerAlignmentErrorRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
+    connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
+    toGet = cms.VPSet(
+        cms.PSet(
+            record = cms.string('TrackerAlignmentErrorExtendedRcd'),
+            tag = cms.string('TrackerIdealGeometryErrorsExtended210_mc')
+            )
+        )
+    )
 #process.prefer_conditionsInTrackerAlignmentErrorRcd = cms.ESPrefer("PoolDBESSource", "conditionsInTrackerAlignmentErrorRcd")
 
 ## SiStrip BackPlane corrections

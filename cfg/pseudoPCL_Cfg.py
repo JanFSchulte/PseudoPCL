@@ -6,7 +6,7 @@ class pseudoPCLConfig:
 	magnetOn = True
 
 	#data config
-	dataset = "/StreamExpress/Run2016B-TkAlMinBias-Express-v1/ALCARECO"
+	dataset = "/StreamExpress/Run2016B-TkAlMinBias-Express-v2/ALCARECO"
 	minNumEv = 20000
 
 	#user config
