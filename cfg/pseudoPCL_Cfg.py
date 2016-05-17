@@ -10,13 +10,12 @@ class pseudoPCLConfig:
 	minNumEv = 20000
 
 	#user config
-	mail = "jschulte@cern.ch"
-	workDir = "/afs/cern.ch/work/j/jschulte/CMSSW_8_0_7/src/"
-	pubDir = "/afs/cern.ch/user/j/jschulte/public"
+	mail = "kiesel@cern.ch"
+	workDir = "/afs/cern.ch/work/k/kiesel/alignment/CMSSW_8_0_8/src/"
+	pubDir = "/afs/cern.ch/user/k/kiesel/public"
 	sendMail = True
-	
+
 	#PCL config
 	uploadToDropBox = False
-	skipExpressStreamFinishedCheck = False
-	
+	skipExpressStreamFinishedCheck = False # check if stream exprepss is complete: False:= do check, True:= Process nevertheless
 
