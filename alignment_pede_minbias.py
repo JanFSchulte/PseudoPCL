@@ -67,7 +67,7 @@ process.conditionsInTrackerAlignmentErrorRcd = CalibTracker.Configuration.Common
             )
         )
     )
-#process.prefer_conditionsInTrackerAlignmentErrorRcd = cms.ESPrefer("PoolDBESSource", "conditionsInTrackerAlignmentErrorRcd")
+process.prefer_conditionsInTrackerAlignmentErrorRcd = cms.ESPrefer("PoolDBESSource", "conditionsInTrackerAlignmentErrorRcd")
 
 ## SiStrip BackPlane corrections
 #process.conditionsInSiStripBackPlaneCorrectionRcd = CalibTracker.Configuration.Common.PoolDBESSource_cfi.poolDBESSource.clone(
