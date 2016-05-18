@@ -84,6 +84,7 @@ else:
     for line in logFile:
         if 'NREC =' in line:
             records = line.split()
+
             Nrec = int(records[2])
             if Nrec < 25000:
                 PedeSucess = False
