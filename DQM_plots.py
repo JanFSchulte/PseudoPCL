@@ -1,13 +1,28 @@
 #!/usr/bin/python
 #-------------------------------
-# Latest update: 2015.06.03
-# by Chris for PCL Alignment
+# Latest update: 2016.05.17
+# by Jan for PCL Alignment
 #-------------------------------
 import sys, os, pwd, commands
 import optparse, shlex, re
 import math
 from ROOT import *
 import ROOT
+
+from sys import argv
+
+if len(argv) < 3:
+	print "No Config File or run number given"
+	sys.exit(0)
+path = argv[1].split("/cfg")[0]
+sys.path.append(path+"/cfg/")
+config = argv[1].split("/")[-1].split(".")[0]
+configModule = __import__(config)
+
+pseudoPCLConfig = configModule.pseudoPCLConfig
+
+runNumber = argv[2]
+
 
 PedeSucess = False
 Nrec = 0
@@ -69,6 +84,7 @@ else:
     for line in logFile:
         if 'NREC =' in line:
             records = line.split()
+
             Nrec = int(records[2])
             if Nrec < 25000:
                 PedeSucess = False
@@ -349,8 +365,8 @@ Zrot.Draw("AE1 SAME")
 Zrot_2.Draw("HIST same")
 Zrot_3.Draw("HIST same")
 
-c.Print("PCL_SiPixAl_Expert.pdf")
-c.Print("PCL_SiPixAl_Expert.png")
+c.Print("PCL_SiPixAl_Expert_%s.pdf"%runNumber)
+c.Print("PCL_SiPixAl_Expert_%s.png"%runNumber)
 
 c1 = ROOT.TCanvas("PCL_SiPixAl","PCL_SiPixAl",1000,600)
 c1.Divide(1,3)
@@ -370,11 +386,11 @@ else :
 Text_DB.SetFillColor(kGray)
 if HitMax or HitErrorMax:
     Text_DB.SetFillColor(kRed)
-    command = "echo \"New Alignment to be Updated "+os.getcwd()+" Nrec={0}\" | mail -s \"New Prompt Unreasonable Alignment Update\" jschulte@cern.ch".format(Nrec)
+    command = "echo \"New Alignment to be Updated "+os.getcwd()+" Nrec={0}\" | mail -s \"New Prompt Unreasonable Alignment Update\" {1}".format(Nrec,pseudoPCLConfig.mail)
     os.system(command)
 elif DBupdated:
     Text_DB.SetFillColor(kOrange)
-    command = "echo \"New Alignment to be Updated "+os.getcwd()+" Nrec={0}\" | mail -s \"New Prompt Reasonable Alignment Update\" jschulte@cern.ch".format(Nrec)
+    command = "echo \"New Alignment to be Updated "+os.getcwd()+" Nrec={0}\" | mail -s \"New Prompt Reasonable Alignment Update\" {1}".format(Nrec,pseudoPCLConfig.mail)
     os.system(command)
 c1.cd(1)
 Text_DB.Draw()
@@ -425,8 +441,8 @@ else :
         Text_Signif.SetFillColor(kGray)
 Text_Signif.Draw()
 
-c1.Print("PCL_SiPixAl.pdf")
-c1.Print("PCL_SiPixAl.png")
+c1.Print("PCL_SiPixAl_%s.pdf"%runNumber)
+c1.Print("PCL_SiPixAl_%s.png"%runNumber)
 
 file = ROOT.TFile("PCL_SiPixAl_DQM.root","RECREATE")
 c1.Write()

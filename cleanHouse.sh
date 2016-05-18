@@ -5,4 +5,5 @@ cd ../
 rm -r MinBias_2016_*
 cd ../
 mv Results$RUNNUM ~/public/pp3.8T_PCL_Alignment
+cp printTwiki.py ~/public/pp3.8T_PCL_Alignment
 echo "DONE!"

@@ -11,4 +11,4 @@ bash findBinaries.sh $RUNNUM $NUMFILES $CONFIG
 python DoMINBIAS_pede.py $RUNNUM $CONFIG
 mv DQM_plots.py $workDir/PseudoPCL/Results$RUNNUM/MinBias_2016/
 cd $workDir/PseudoPCL/Results$RUNNUM/MinBias_2016/
-python DQM_plots.py
+python DQM_plots.py $CONFIG $RUNNUM
