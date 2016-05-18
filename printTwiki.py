@@ -26,9 +26,9 @@ for i in os.listdir(os.getcwd()):
 		
 		txt = '''
 ---++++ Run {0}
-Further results can be found at /afs/cern.ch/user/j/jschulte/public/pp3.8T_PCL_Alignment/Results{0}
+Further results can be found at {4}/Results{0}
 
-DB object can be found at /afs/cern.ch/user/j/jschulte/public/pp3.8T_PCL_Alignment/Results{0}/MinBias_2016/TkAlignment.db (Tag: testTag)
+DB object can be found at {4}/Results{0}/MinBias_2016/TkAlignment.db (Tag: testTag)
    * <verbatim>Tracks used by Pede...........{1}</verbatim>  
    * <verbatim>Chi^2/Ndof....................{2}</verbatim>
    * <verbatim>Fraction of rejects...........{3} %</verbatim>
@@ -38,4 +38,4 @@ DB object can be found at /afs/cern.ch/user/j/jschulte/public/pp3.8T_PCL_Alignme
      <img alt="PCL_SiPixAl_Expert_{0}.png" height="730" src="%ATTACHURLPATH%/PCL_SiPixAl_Expert_{0}.png" width="1246" >
 		'''
 
-		print txt.format(run,Nrec,chi2,fraction)
+		print txt.format(run,Nrec,chi2,fraction,os.getcwd())
